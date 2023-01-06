@@ -1,0 +1,230 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Chuẩn đoán bệnh</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['']">Home</a></li>
+                    <li class="breadcrumb-item active">Chuẩn đoán bệnh</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="modal fade" id="modal-xl">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Kết quả chuẩn đoán: {{chuanDoanRes.caseDataRes.chuanDoan}}</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Giới tính</th>
+                                        <th>Tuổi</th>
+                                        <th>Tình trạng đau ngực</th>
+                                        <th>Huyết áp</th>
+                                        <th>Nồng độ Cholesterol</th>
+                                        <th>Hạ đường huyết trong máu</th>
+                                        <th>Kết quả đo điện tim</th>
+                                        <th>Nhịp tim</th>
+                                        <th>Viêm họng</th>
+                                        <th>Độ lõm sóng điện tim</th>
+                                        <th>Độ dốc đỉnh cao nhất sóng ST</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{chuanDoanRes.caseDataRes.id}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.gioiTinh}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.tuoi}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.tinhTrangNguc}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.huyetAp}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.nongDoCholesterol}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.haDuongTrongMau == true ? "Có" : "Không"}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.ketQuaDoDienTim}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.nhipTim}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.viemHong == true ? "Có" : "Không"}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.doLomSongDienTim}}</td>
+                                        <td>{{chuanDoanRes.caseDataRes.doDocDinhCaoNhatSongST}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> <br> <br> <br> 
+
+                        <h3>Danh sách case có độ tương đồng cao nhất (= {{chuanDoanRes.doTuongDongMax}})</h3>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Giới tính</th>
+                                        <th>Tuổi</th>
+                                        <th>Tình trạng đau ngực</th>
+                                        <th>Huyết áp</th>
+                                        <th>Nồng độ Cholesterol</th>
+                                        <th>Hạ đường huyết trong máu</th>
+                                        <th>Kết quả đo điện tim</th>
+                                        <th>Nhịp tim</th>
+                                        <th>Viêm họng</th>
+                                        <th>Độ lõm sóng điện tim</th>
+                                        <th>Độ dốc đỉnh cao nhất sóng ST</th>
+                                        <th>Kết quả</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of chuanDoanRes.listCaseDataRes">
+                                        <td>{{item.id}}</td>
+                                        <td>{{item.gioiTinh}}</td>
+                                        <td>{{item.tuoi}}</td>
+                                        <td>{{item.tinhTrangNguc}}</td>
+                                        <td>{{item.huyetAp}}</td>
+                                        <td>{{item.nongDoCholesterol}}</td>
+                                        <td>{{item.haDuongTrongMau == true ? "Có" : "Không"}}</td>
+                                        <td>{{item.ketQuaDoDienTim}}</td>
+                                        <td>{{item.nhipTim}}</td>
+                                        <td>{{item.viemHong == true ? "Có" : "Không"}}</td>
+                                        <td>{{item.doLomSongDienTim}}</td>
+                                        <td>{{item.doDocDinhCaoNhatSongST}}</td>
+                                        <td>{{item.ketQua == true ? "Bị bệnh" : "Không bị bệnh"}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <a routerLink="/can-ho-dang-xu-ly" data-dismiss="modal" type="button"
+                            class="btn btn-primary">Save changes</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <!-- general form elements -->
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Các thông tin về và chỉ số</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form (ngSubmit)="onChuanDoan()" [formGroup]="caseDataForm">
+                        <div class="card-body">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="">Tuổi</label>
+                                    <input [(ngModel)]="newCase.tuoi" formControlName="tuoi" min="60" max="100"
+                                        type="number" class="form-control" id="" placeholder="Nhập tuổi">
+                                </div>
+                                <div class="form-group">
+                                    <label>Giới tính</label>
+                                    <select (change)="changeGioiTinh($event)" formControlName="gioiTinh"
+                                        class="form-control">
+                                        <option value="">Chọn giới tính</option>
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Biểu hiện đău ngực</label>
+                                    <select (change)="changeDauNguc($event)" formControlName="tinhTrangNguc"
+                                        class="form-control">
+                                        <option value="">Chọn biểu hiện</option>
+                                        <option value="Đau thắt ngực ổn định">Đau thắt ngực ổn định</option>
+                                        <option value="Đau thắt ngực không ổn định">Đau thắt ngực không ổn định</option>
+                                        <option value="Đau thắt ngực prinzmetal">Đau thắt ngực prinzmetal</option>
+                                        <option value="Không đau thắt ngực">Không đau thắt ngực</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Huyết áp</label>
+                                    <input [(ngModel)]="newCase.huyetAp" formControlName="huyetAp" min="94" max="200"
+                                        type="number" class="form-control" id="" placeholder="Nhập huyết áp">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Lượng Cholesterol</label>
+                                    <input [(ngModel)]="newCase.nongDoCholesterol" formControlName="nongDoCholesterol"
+                                        min="126" max="564" type="number" class="form-control" id=""
+                                        placeholder="Nhập lượng cholesterol">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Bệnh nhân có bị hạ đường huyết trong máu không</label>
+                                    <select (change)="changeDuongHuyet($event)" formControlName="haDuongTrongMau" class="form-control">
+                                        <option value="">Lựa chọn</option>
+                                        <option [value]="true">Tôi có bị hạ đường huyết</option>
+                                        <option [value]="false">Tôi không bị</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Biểu diễn kết quả đo điện tim</label>
+                                    <select (change)="changeDoDienTim($event)" formControlName="ketQuaDoDienTim" class="form-control">
+                                        <option value="">Lựa chọn</option>
+                                        <option value="Bình thường">Bình thường</option>
+                                        <option value="Có sóng ST-T bất thường">Có sóng ST-T bất thường</option>
+                                        <option value="Phì đại thất trái">Phì đại thất trái</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Nhịp tim</label>
+                                    <input [(ngModel)]="newCase.nhipTim" formControlName="nhipTim" min="71" max="202"
+                                        type="number" class="form-control" id="" placeholder="Nhập nhịp tim">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Bệnh nhân có bị viêm họng</label>
+                                    <select (change)="changeViemHong($event)" formControlName="viemHong"
+                                        class="form-control">
+                                        <option value="">Lựa chọn</option>
+                                        <option [value]="true">Có</option>
+                                        <option [value]="false">Không</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Độ lõm của sóng điện tim</label>
+                                    <input [(ngModel)]="newCase.doLomSongDienTim" formControlName="doLomSongDienTim"
+                                        min="0" max="6.2" type="number" class="form-control" id=""
+                                        placeholder="Nhập giá trị">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Độ dốc của đỉnh cao nhất đoạn sóng ST</label>
+                                    <select (change)="changeDoDoc($event)" formControlName="doDocDinhCaoNhatSongST"
+                                        class="form-control">
+                                        <option value="">Lựa chọn</option>
+                                        <option value="Dốc lên">Dốc lên</option>
+                                        <option value="Bằng phẳng">Bằng phẳng</option>
+                                        <option value="Xuống dốc">Xuống dốc</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button [disabled]="!caseDataForm.valid" type="submit" class="btn btn-primary"
+                                data-toggle="modal" data-target="#modal-xl">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->

@@ -1,0 +1,148 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Danh sách case chuẩn đoán đã xử lý</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['']">Home</a></li>
+                    <li class="breadcrumb-item active">Danh sách case chuẩn đoán đã xử lý</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Case đã xử lý</h3>
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right"
+                                    placeholder="Search">
+
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <div class="mat-elevation-z8">
+                            <table class="table table-hover text-nowrap table-bordered" mat-table
+                                [dataSource]="dataSource">
+
+                                <ng-container matColumnDef="id">
+                                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="gioiTinh">
+                                    <th mat-header-cell *matHeaderCellDef> Giới tính </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.gioiTinh}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="tuoi">
+                                    <th mat-header-cell *matHeaderCellDef> Tuổi </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.tuoi}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="tinhTrangNguc">
+                                    <th mat-header-cell *matHeaderCellDef> Tình trạng đau ngực </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.tinhTrangNguc}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="huyetAp">
+                                    <th mat-header-cell *matHeaderCellDef> Huyết áp </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.huyetAp}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="nongDoCholesterol">
+                                    <th mat-header-cell *matHeaderCellDef> Nồng độ Cholesterol </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.nongDoCholesterol}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="haDuongTrongMau">
+                                    <th mat-header-cell *matHeaderCellDef> Hạ đường huyết trong máu </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.haDuongTrongMau == true ? "Có" : "Không"}}
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="ketQuaDoDienTim">
+                                    <th mat-header-cell *matHeaderCellDef> Kết quả đo điện tim </th>
+                                    <td mat-cell *matCellDef="let element">{{element.ketQuaDoDienTim}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="nhipTim">
+                                    <th mat-header-cell *matHeaderCellDef> Nhịp tim </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.nhipTim}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="viemHong">
+                                    <th mat-header-cell *matHeaderCellDef> Viêm họng </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.viemHong == true ? "Có" : "Không"}}
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="doLomSongDienTim">
+                                    <th mat-header-cell *matHeaderCellDef> Độ lõm sóng điện tim </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.doLomSongDienTim}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="doDocDinhCaoNhatSongST">
+                                    <th mat-header-cell *matHeaderCellDef> Độ dốc đỉnh cao nhất sóng ST </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.doDocDinhCaoNhatSongST}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="ketQua">
+                                    <th mat-header-cell *matHeaderCellDef> Kết quả </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.ketQua == true ? "Bị bệnh" : "Không bị bệnh"}}
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="trangThai">
+                                    <th mat-header-cell *matHeaderCellDef> Trạng thái </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.trangThai}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef> Hành động </th>
+                                    <td mat-cell *matCellDef="let element"> <a
+                                            routerLink="/cap-nhat-can-ho/{{element.id}}" class="btn btn-success">Cập
+                                            nhật</a>
+                                        <a class="btn btn-danger">Xóa</a>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                        </div>
+                    </div>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
